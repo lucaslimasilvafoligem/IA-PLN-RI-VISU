@@ -16,7 +16,7 @@ SELECT to_tsvector('portuguese', 'cafe');
 (1 row)
 */
 
-lSELECT to_tsvector('english', 'red dead redemption');
+SELECT to_tsvector('english', 'red dead redemption');
 /*      
 ------------------------------
  'dead':2 'red':1 'redempt':3
@@ -74,7 +74,9 @@ SELECT to_tsvector('english', 'elite e bala, pois Saci quem manda');
 
 --QUESTÃO 2:
 
-SELECT title FROM best_films WHERE to_tsvector('english', description) @@ to_tsquery('english', 'family & drama');
+SELECT title 
+FROM best_films 
+WHERE to_tsvector('english', description) @@ to_tsquery('english', 'family & drama');
 /*  
 Resultado:
 ----------------------
@@ -87,7 +89,9 @@ Sim, todos possuem esse fragmento
 */
 
 --QUESTÃO 3:
-SELECT title FROM best_films WHERE to_tsvector('english', description) @@ to_tsquery('english', 'family <-> drama');
+SELECT title 
+FROM best_films 
+WHERE to_tsvector('english', description) @@ to_tsquery('english', 'family <-> drama');
 /*
 Resultado:
 -------
@@ -105,7 +109,9 @@ Resposta: true. Ele ignora as conjuções, portanto acaba por ser verdade.
 */
 
 --QUESTÃO 5:
-SELECT title FROM best_films WHERE to_tsvector('english', description) @@ to_tsquery('english', 'fame <-> about <-> fortunes');
+SELECT title 
+FROM best_films 
+WHERE to_tsvector('english', description) @@ to_tsquery('english', 'fame <-> about <-> fortunes');
 /*  
 --------------------
  Being the Ricardos
@@ -120,7 +126,9 @@ Resposta: Sim. Ele ignora as conjunções e foca nas palavras chave.
 --QUESTÃO 6:
 
 --6.1:
-SELECT title FROM best_films WHERE to_tsvector('english', description) @@ to_tsquery('english', 'fame <1> about <1> fortunes');
+SELECT title 
+FROM best_films 
+WHERE to_tsvector('english', description) @@ to_tsquery('english', 'fame <1> about <1> fortunes');
 /* 
 --------------------
  Being the Ricardos
@@ -177,7 +185,8 @@ WHERE description_ts @@ to_tsquery('english', 'drama');
 
 --QUESTÃO 9:
 
-SELECT title FROM best_films 
+SELECT title 
+FROM best_films 
 WHERE description_ts @@ to_tsquery('english', 'family & drama')
 ORDER BY ts_rank(description_ts, to_tsquery('english', 'family & drama')) DESC;
 /*
