@@ -121,8 +121,9 @@ def score(palavra, menorLen):
     valor = 0
     indice = 0
     for i in palavra:
-        if (indice == menorLen): return valor
-        if (ord(i) > 64 and ord(i) < 91): valor += (indice + 1) * (ord(i) + 32) + 0.5
+        if (indice == menorLen and len(palavra) > menorLen): return valor
+        if (indice == menorLen): return valor + 0.0001
+        if (ord(i) > 64 and ord(i) < 91): valor += (indice + 1) * (ord(i) + 32) + 0.0001
         else: valor += (indice + 1) * ord(i)
         indice += 1
     return valor
@@ -138,7 +139,7 @@ def score(palavra, indice, menorLen):
 """
 
 #Exemplo de ordenação de carcteres não númericos
-print(quickSort(["A", "x", "e", "abcd", "d", "c", "a~", "-", "B", "y"], 0, 9))
+print(quickSort(["Aaaa", "Aaa", "Aa", "x", "e", "abcd", "d", "c", "a~", "-", "B", "y", "11"], 0, 12))
 
 #Exemplo de intersecção
 print(intersect((["A", "x", "e", "abcd", "d", "c", "a~", "-", "B", "y", "f", "ba"], False), (["ab", "A", "f", "y", "-"], True)))
