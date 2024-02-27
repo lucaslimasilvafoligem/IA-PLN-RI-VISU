@@ -1,3 +1,25 @@
+/*
+Dados texto:
+    
+    1 - Tinytext/255
+    2 - Text/65.535
+    3 - char /255 Fixo
+    4 - varchar/65.535 variável
+
+Dados Numéricos:
+
+    1 - Float(p,e)
+    2 - Double(p,e)
+    3 - Decimal(p,e)
+    4 - Inte|Integer
+
+Dados Temporais:
+
+    1 - Date AAAA-MM-DD
+    2 - Datetime AAAA-MM-DD HH:MI:SS
+    3 - Year AAAA
+    4 - Time HH:MM:MI:SS
+*/
 
 /*CRIAR*/
 /*Criar banco de dados*/
@@ -58,3 +80,6 @@ ADD CONSTRAINT fk_amigo_contato FOREIGN KEY (id_amigo_contato) REFERENCES amigo 
 DROP DATABASE testeL;
 
 DROP TABLE testeL;
+
+/*Insert Into*/
+INSERT INTO <tabel> (colunas) VALUES (valores)
